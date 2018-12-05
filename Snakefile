@@ -38,6 +38,17 @@ rule plot_abyss:
         python source/plotcount.py processed_data/abyss.dat results/abyss.png
         """
 
+rule zipf_test:
+    input:
+        'processed_data/isles.dat',
+        'processed_data/abyss.dat',
+        'processed_data/last.dat'
+    output:
+        'results/results.txt'
+    shell:
+        'python source/zipf_test.py {input} > {output}'
+
+
 rule clean:
     shell:
         """
